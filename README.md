@@ -9,6 +9,14 @@ L’application aide à comprendre quelles informations un fichier peut révéle
 
 <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/logos/icone.png" alt="icone" width="100">  
 
+Visitez le [WIKI](https://github.com/tonyo-BZH/EXIFiles/wiki)pour plus de détails.
+
+
+
+## Captures d'écran
+
+<img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/clair.jpg" alt="logo" width="300"> <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/sombre.jpg" alt="logo" width="300"> <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/g%C3%A9olocalisation.jpg" alt="logo" width="300"> <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/parcours.jpg" alt="logo" width="300">
+
 ## Fonctionnalités
 
 - **Analyse de fichiers en local** : déposer des fichiers ou un dossier dans l’application.
@@ -67,6 +75,13 @@ Les mentions de licence des composants intégrés sont indiquées dans le code s
 - Un fichier peut avoir été modifié, privé de ses métadonnées ou contenir des informations inexactes.
 - Un navigateur ne donne pas nécessairement accès à toutes les dates du système de fichiers. La date de prise de vue EXIF, lorsqu’elle existe, est distincte de la date de modification du fichier.
 - L’affichage des fonds de carte et leur inclusion dans les exports dépendent des services cartographiques utilisés et de leurs conditions techniques.
+
+
+## Mises à jour
+
+Visitez le WIKI pour plus de détails : [Historique des mises à jour](https://github.com/tonyo-BZH/EXIFiles/wiki/Historique)
+
+
 
 ## Licence
 
