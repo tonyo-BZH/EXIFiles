@@ -1,5 +1,5 @@
 # EXIFiles
-<img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/logos/titre.png" alt="Description" width="400">  
+<img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/logos/titre.png" alt="logo" width="400">  
 
 **EXIFiles** est une application web permettant d’examiner les métadonnées contenues dans des fichiers, notamment les photographies, les vidéos et les fichiers audio.
 
@@ -7,7 +7,7 @@ La particularité de cette application est qu'elle propose une géolocalisation 
 
 L’application aide à comprendre quelles informations un fichier peut révéler : date de prise de vue, caractéristiques du média, coordonnées GPS, informations IPTC/XMP ou encore tags audio. Elle peut notamment servir à l’analyse de fichiers, à la sensibilisation à la vie privée numérique et à des activités pédagogiques autour des métadonnées.  
 
-<img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/logos/icone.png" alt="Description" width="100">  
+<img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/logos/icone.png" alt="icone" width="100">  
 
 ## Fonctionnalités
 
@@ -72,7 +72,6 @@ Les mentions de licence des composants intégrés sont indiquées dans le code s
 
 Le dépôt indique une licence ......
 
-## Auteur et contributions
 
-Projet : [tonyo-BZH/EXIFiles](https://github.com/tonyo-BZH/EXIFiles)
+<img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/logos/bandeau_slogan.jpg" alt="Bandeau" width="800">  
 
