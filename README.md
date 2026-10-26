@@ -9,7 +9,7 @@ L’application aide à comprendre quelles informations un fichier peut révéle
 
 <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/logos/icone.png" alt="icone" width="100">  
 
-Visitez le [WIKI](https://github.com/tonyo-BZH/EXIFiles/wiki)pour plus de détails.
+Visitez le [WIKI](https://github.com/tonyo-BZH/EXIFiles/wiki) pour plus de détails.
 
 
 
