@@ -15,7 +15,7 @@ Visitez le [WIKI](https://github.com/tonyo-BZH/EXIFiles/wiki) pour plus de déta
 
 ## Captures d'écran
 
-<img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/clair.jpg" alt="logo" width="300"> <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/sombre.jpg" alt="logo" width="300"> <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/g%C3%A9olocalisation.jpg" alt="logo" width="300"> <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/parcours.jpg" alt="logo" width="300">
+<img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/clair.jpg" alt="capture" width="300"> <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/sombre.jpg" alt="capture" width="300"> <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/g%C3%A9olocalisation.jpg" alt="capture" width="300"> <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/parcours.jpg" alt="capture" width="300">
 
 ## Fonctionnalités
 
