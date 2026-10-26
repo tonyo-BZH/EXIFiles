@@ -1,10 +1,13 @@
 # EXIFiles
+<img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/logos/titre.png" alt="Description" width="400">  
 
 **EXIFiles** est une application web permettant d’examiner les métadonnées contenues dans des fichiers, notamment les photographies, les vidéos et les fichiers audio.
 
 La particularité de cette application est qu'elle propose une géolocalisation et la génération de parcours dans une carte intégrée. De plus elle fonctionne localement dans un navigateur sans installation ni compte.
 
-L’application aide à comprendre quelles informations un fichier peut révéler : date de prise de vue, caractéristiques du média, coordonnées GPS, informations IPTC/XMP ou encore tags audio. Elle peut notamment servir à l’analyse de fichiers, à la sensibilisation à la vie privée numérique et à des activités pédagogiques autour des métadonnées.
+L’application aide à comprendre quelles informations un fichier peut révéler : date de prise de vue, caractéristiques du média, coordonnées GPS, informations IPTC/XMP ou encore tags audio. Elle peut notamment servir à l’analyse de fichiers, à la sensibilisation à la vie privée numérique et à des activités pédagogiques autour des métadonnées.  
+
+<img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/logos/icone.png" alt="Description" width="100">  
 
 ## Fonctionnalités
 
@@ -25,11 +28,9 @@ L’application aide à comprendre quelles informations un fichier peut révéle
 
 ## Utilisation
 
-### Lancer l’application
-
-1. Téléchargez le fichier `EXIFiles.html`
+1. Téléchargez le fichier `EXIFiles.html` en allant dans [Release](https://github.com/tonyo-BZH/EXIFiles/releases/latest) et en téléchargeant le fichier compressé de la dernière version, décompressez-le sur votre ordinateur, placer le fichier .html où vous voulez sur votre ordinateur.
 2. Ouvrez le fichier `EXIFiles.html` dans un navigateur web moderne.
-3. Déposez un ou plusieurs fichiers — ou un dossier dans la zone prévue.
+3. Déposez un ou plusieurs fichiers / ou un dossier dans la zone prévue.
 4. Cliquez sur le nom d’un fichier pour consulter les métadonnées disponibles.
 5. Utilisez les commandes de filtrage, de géolocalisation et d’export selon vos besoins.
 
@@ -50,7 +51,7 @@ Quelques précautions restent nécessaires :
 - Les résultats d’analyse peuvent contenir des données privées : évitez de les publier sans vérification.
 
 
-## Technologies
+## Technologies / Bibliothèques tierces
 
 Le projet est constitué d’une page HTML intégrant du CSS et du JavaScript. Il s’appuie notamment sur des bibliothèques JavaScript pour lire les métadonnées et afficher les cartes :
 
@@ -60,7 +61,7 @@ Le projet est constitué d’une page HTML intégrant du CSS et du JavaScript. I
 
 Les mentions de licence des composants intégrés sont indiquées dans le code source.
 
-## Limites
+## Limites & contraintes
 
 - Les métadonnées disponibles varient selon le format de fichier et les logiciels ou appareils qui l’ont créé.
 - Un fichier peut avoir été modifié, privé de ses métadonnées ou contenir des informations inexactes.
