@@ -54,9 +54,9 @@ Quelques précautions restent nécessaires :
 
 Le projet est constitué d’une page HTML intégrant du CSS et du JavaScript. Il s’appuie notamment sur des bibliothèques JavaScript pour lire les métadonnées et afficher les cartes :
 
-- [exifr](https://github.com/MikeKovarik/exifr) — lecture des métadonnées d’images ;
-- [jsmediatags](https://github.com/aadsm/jsmediatags) — lecture des tags de médias ;
-- [Leaflet](https://leafletjs.com/) — affichage de cartes interactives.
+- EXIFR : lecture des métadonnées d’images ;
+- jsmediatags : lecture des tags de médias ;
+- Leaflet : affichage de cartes interactives.
 
 Les mentions de licence des composants intégrés sont indiquées dans le code source.
 
@@ -75,4 +75,3 @@ Le dépôt indique une licence ......
 
 Projet : [tonyo-BZH/EXIFiles](https://github.com/tonyo-BZH/EXIFiles)
 
-Les retours, suggestions et signalements de problèmes peuvent être déposés dans les [issues GitHub](https://github.com/tonyo-BZH/EXIFiles/issues).
