@@ -2,6 +2,8 @@
 
 **EXIFiles** est une application web permettant d’examiner les métadonnées contenues dans des fichiers, notamment les photographies, les vidéos et les fichiers audio.
 
+La particularité de cette application est qu'elle propose une géolocalisation et la génération de parcours dans une carte intégrée. De plus elle fonctionne localement dans un navigateur sans installation ni compte.
+
 L’application aide à comprendre quelles informations un fichier peut révéler : date de prise de vue, caractéristiques du média, coordonnées GPS, informations IPTC/XMP ou encore tags audio. Elle peut notamment servir à l’analyse de fichiers, à la sensibilisation à la vie privée numérique et à des activités pédagogiques autour des métadonnées.
 
 ## Fonctionnalités
@@ -25,36 +27,28 @@ L’application aide à comprendre quelles informations un fichier peut révéle
 
 ### Lancer l’application
 
-1. Téléchargez ou clonez le dépôt GitHub.
+1. Téléchargez le fichier `EXIFiles.html`
 2. Ouvrez le fichier `EXIFiles.html` dans un navigateur web moderne.
-3. Déposez un ou plusieurs fichiers — ou un dossier si votre navigateur le permet — dans la zone prévue.
+3. Déposez un ou plusieurs fichiers — ou un dossier dans la zone prévue.
 4. Cliquez sur le nom d’un fichier pour consulter les métadonnées disponibles.
 5. Utilisez les commandes de filtrage, de géolocalisation et d’export selon vos besoins.
 
-Aucune installation classique n’est nécessaire pour essayer la version HTML. Certaines fonctionnalités, notamment l’affichage des cartes et l’ouverture de services cartographiques externes, peuvent nécessiter une connexion Internet.
+Aucune installation n’est nécessaire. Certaines fonctionnalités, notamment l’affichage des cartes et l’ouverture de services cartographiques externes, peuvent nécessiter une connexion Internet.
 
-### Télécharger le projet
 
-Vous pouvez récupérer le code source depuis le dépôt :
-
-[**Ouvrir le dépôt EXIFiles sur GitHub**](https://github.com/tonyo-BZH/EXIFiles)
-
-Ou le télécharger sous forme d’archive ZIP depuis GitHub : cliquez sur **Code**, puis sur **Download ZIP**.
 
 ## Confidentialité et données personnelles
 
 Les métadonnées peuvent révéler des informations sensibles : lieu et heure de prise de vue, appareil utilisé, logiciel employé ou informations descriptives.
 
-EXIFiles analyse les fichiers sélectionnés dans le navigateur. **Le contenu des fichiers analysés n’est pas envoyé à un serveur par l’application pour effectuer cette analyse.**
+EXIFiles analyse les fichiers sélectionnés dans le navigateur, localement. **Le contenu des fichiers analysés n’est pas envoyé à un serveur par l’application pour effectuer cette analyse.**
 
 Quelques précautions restent nécessaires :
 
 - Les cartes et services externes peuvent nécessiter une connexion Internet. Leur utilisation peut entraîner des échanges avec le service concerné.
 - L’ouverture d’un lien vers une carte externe transmet au service cartographique les informations présentes dans l’URL, par exemple des coordonnées GPS.
-- Avant de partager une photo, vérifiez si ses métadonnées révèlent un lieu privé ou des informations personnelles.
 - Les résultats d’analyse peuvent contenir des données privées : évitez de les publier sans vérification.
 
-Pour les détails exacts sur les traitements réseau, consultez le code source et les mentions intégrées à l’application.
 
 ## Technologies
 
@@ -75,7 +69,7 @@ Les mentions de licence des composants intégrés sont indiquées dans le code s
 
 ## Licence
 
-Le dépôt indique une licence **CC0 1.0 Universal**. Consultez le fichier [`LICENSE`](LICENSE) du dépôt pour les conditions et précisions applicables.
+Le dépôt indique une licence ......
 
 ## Auteur et contributions
 
