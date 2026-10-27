@@ -9,15 +9,17 @@ L’application aide à comprendre quelles informations un fichier peut révéle
 
 <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/logos/icone.png" alt="icone" width="100">  
 
+***
+
 Visitez le [WIKI](https://github.com/tonyo-BZH/EXIFiles/wiki) pour plus de détails.
 
-
+***
 
 ## Captures d'écran
 
 <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/clair.jpg" alt="capture" width="300"> <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/sombre.jpg" alt="capture" width="300"> <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/g%C3%A9olocalisation.jpg" alt="capture" width="300"> <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/captures/parcours.jpg" alt="capture" width="300">
 
-
+***
 
 ## Utilisation / Téléchargement
 
@@ -27,28 +29,12 @@ Visitez le [WIKI](https://github.com/tonyo-BZH/EXIFiles/wiki) pour plus de déta
 
 Aucune installation n’est nécessaire. Certaines fonctionnalités, notamment l’affichage des cartes et l’ouverture de services cartographiques externes, peuvent nécessiter une connexion Internet.
 
+***
+## Wiki
 
+Visitez le [WIKI](https://github.com/tonyo-BZH/EXIFiles/wiki) pour plus de détails.
 
-Sommaire du Wiki : 
-
-* [Accueil](home)
-* [Fonctionnalités](fonctionnalités)
-  * [Tableau des fichiers](fonctionnalités#tableau-des-fichiers)
-  * [Vue détaillée en onglets](fonctionnalités#vue-détaillée-en-onglets)
-  * [Onglet GPS](fonctionnalités#onglet-gps)
-  * [Mode parcours](fonctionnalités#mode-parcours)
-  * [Mode Démo](fonctionnalités#mode-démo)
-  * [Personnalisation de l'affichage](fonctionnalités#personnalisation-de-laffichage)
-  * [Indicateurs](fonctionnalités#indicateurs)
-* [Tuto vidéo](tuto)
-* [Limites et contraintes connues](limites)
-* [Liste des bibliothèques tierces utilisées](bibliothèques-tierces)
-* [En prévision...](prévision...)
-* [Pourquoi ce nom ?](origine)
-* [Confidentialité](confidentialité)
-* [Historique des mises à jours](historique)
-
-
+***
 
 
 <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/logos/bandeau_slogan.jpg" alt="Bandeau" width="800">  
