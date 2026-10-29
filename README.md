@@ -1,5 +1,5 @@
 # EXIFiles
-<img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/ressources/logos/titre.png" alt="logo" width="400">  
+<img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/ressources/logos/titre-noir.jpg" alt="logo" width="400">  
 
 **EXIFiles** est une application web permettant d’examiner les métadonnées contenues dans des fichiers, notamment les photographies, les vidéos et les fichiers audio.
 
