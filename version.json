@@ -1,6 +1,6 @@
 {
-  "version": "1.5",
-  "date": "2026-10-29",
+  "version": "2.0",
+  "date": "2026-11-10",
   "url": "https://github.com/tonyo-BZH/EXIFiles/releases/latest",
-  "notes": "Nouveaux visuels : logos, bandeaux..."
+  "notes": "Ajout du mode Edition qui permet de modifier les EXIF des fichiers JPEG"
 }
