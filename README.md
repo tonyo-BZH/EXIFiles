@@ -1,7 +1,7 @@
 # EXIFiles
 <img src="https://github.com/tonyo-BZH/EXIFiles/blob/main/ressources/logos/titre-noir.jpg" alt="logo" width="400">  
 
-**EXIFiles** est une application web permettant d’examiner les métadonnées contenues dans des fichiers, notamment les photographies, les vidéos et les fichiers audio.
+**EXIFiles** est une application web permettant d’examiner les métadonnées contenues dans des fichiers, notamment les photographies, les vidéos et les fichiers audio. à partir de la version 2.0 il est également possible de modifier et compléter les données EXIF des images JPEG.
 
 La particularité de cette application est qu'elle propose une géolocalisation et la génération de parcours dans une carte intégrée. De plus elle fonctionne localement dans un navigateur sans installation ni compte.
 
