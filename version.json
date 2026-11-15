@@ -1,6 +1,6 @@
 {
-  "version": "2.0",
-  "date": "2026-11-10",
+  "version": "2.1",
+  "date": "2026-11-15",
   "url": "https://github.com/tonyo-BZH/EXIFiles/releases/latest",
-  "notes": "Ajout du mode Edition qui permet de modifier les EXIF des fichiers JPEG"
+  "notes": "-En mode 'Édition' lorsque l'on modifie la longitude ou la latitude la carte se positionne sur ces nouvelles coordonnées.-Ajout d'un bouton 'Annuler tout' qui annule les modifications en cours non encore enregistrées (cela réinitialise les champs aux valeurs du fichier d'origine.-Ajout d'un bouton 'Enlever le parcours' : il est maintenant possible de supprimer la zone d'affichage de l’itinéraire des fichiers.-Ajout d'un bouton 'supprimer les métadonnées' pour supprimer toutes les métadonnées possible du/des fichiers sélectionnés."
 }
