@@ -9,8 +9,8 @@
 <title>EXIFiles</title>
 <script>
 /* === À MODIFIER À CHAQUE PUBLICATION (mettre aussi à jour version.json et créer la release GitHub) === */
-var APP_VERSION = "2.1";
-var APP_DATE = "15/11/2026";
+var APP_VERSION = "2.2";
+var APP_DATE = "22/11/2026";
 </script>
 <style>
 /* Leaflet 1.9.4 (BSD-2-Clause) */
@@ -874,8 +874,11 @@ dialog.dlg::backdrop{background:rgba(0,0,0,.45)}
 @media (max-width:560px){dl.kv{grid-template-columns:1fr}dl.kv dt{border:0;padding-bottom:0}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 .thm{padding:6px;font:500 .85rem/1.3 var(--body);color:#18212d}
-.tip{max-width:170px;white-space:normal}
-.tip img{display:block;max-width:160px;max-height:160px;border-radius:4px;margin-bottom:4px}
+.mtip{max-width:170px;white-space:normal;text-align:center;line-height:1.3}
+.mtn{font-weight:700}
+.mtf{overflow-wrap:anywhere}
+.mtd{color:#5b6776;font-size:.8rem}
+.mtip img{display:block;max-width:160px;max-height:160px;border-radius:4px;margin:0 auto 4px}
 .lm{border-radius:50%;background:#fff;border:3px solid #2740e6;color:#18212d;font:600 11px/18px var(--body);text-align:center}
 .lm.first{border-color:#16794c}
 .lm.last{background:#2740e6;color:#fff}
@@ -924,7 +927,7 @@ dialog.dlg::backdrop{background:rgba(0,0,0,.45)}
     </table>
     <div class="empty" id="empty">Aucun fichier pour l'instant.</div>
   </div>
-  <div class="row" id="batchRow" hidden><button type="button" class="bx ed-ctl" id="batchBtn" aria-pressed="false" title="Modifier les mêmes métadonnées dans tous les fichiers JPEG de la liste">✏️ Modifier en lot 📚</button><span class="sub" style="margin:0">…ou sélectionnez 1 fichier pour le modifier individuellement</span></div>
+  <div class="row" id="batchRow" hidden><button type="button" class="bx ed-ctl" id="batchBtn" aria-pressed="false" title="Modifier les mêmes métadonnées dans tous les fichiers compatibles (JPEG, PNG, WebP) de la liste">✏️ Modifier en lot 📚</button><span class="sub" style="margin:0">…ou sélectionnez 1 fichier pour le modifier individuellement</span></div>
   <textarea id="csv" hidden readonly aria-label="Export CSV"></textarea>
   <section id="panel" hidden aria-live="polite"></section>
   <section id="route" hidden aria-live="polite"></section>
@@ -944,7 +947,7 @@ dialog.dlg::backdrop{background:rgba(0,0,0,.45)}
         <a href="https://github.com/tonyo-BZH/EXIFiles/wiki/non-responsabilit%C3%A9" target="_blank" rel="noopener noreferrer">Conditions<span class="sr"> (s’ouvre dans un nouvel onglet)</span></a>
         <a href="https://github.com/tonyo-BZH/EXIFiles/wiki/historique" target="_blank" rel="noopener noreferrer">Historique<span class="sr"> (s’ouvre dans un nouvel onglet)</span></a>
       </nav>
-      <span class="tg" id="modeTg" title="Bascule entre le mode Visualisation (lecture seule) et le mode Édition des métadonnées. Chaque enregistrement crée une copie du fichier (nom_modif.jpg) : le fichier d’origine n’est jamais modifié."><span aria-hidden="true">🕵️</span><span>Visualisation</span><button type="button" class="sw" id="modeSw" role="switch" aria-checked="false" aria-label="Mode édition des métadonnées"></button><span>Édition</span><span aria-hidden="true">✏️</span></span>
+      <span class="tg" id="modeTg" title="Bascule entre le mode Visualisation (lecture seule) et le mode Édition des métadonnées. Chaque enregistrement crée une copie du fichier (nom_modif.jpg, nom_modif.png…) : le fichier d’origine n’est jamais modifié."><span aria-hidden="true">🕵️</span><span>Visualisation</span><button type="button" class="sw" id="modeSw" role="switch" aria-checked="false" aria-label="Mode édition des métadonnées"></button><span>Édition</span><span aria-hidden="true">✏️</span></span>
     </div> 
  </footer>
 </main>
@@ -953,8 +956,8 @@ dialog.dlg::backdrop{background:rgba(0,0,0,.45)}
   <div class="acts"><button type="button" class="primary" id="pdfDlgOk">OK</button></div>
 </dialog>
 <dialog id="editDlg" class="dlg wide" aria-labelledby="editDlgTxt">
-  <p id="editDlgTxt"><strong>Avertissement :</strong> N’utilisez pas cet outil à des fins illégales, frauduleuses ou trompeuses. Utilisez cette fonctionnalité en toute connaissance de cause, car les modifications apportées seront irréversibles. Seuls les documents de type <strong>image</strong> au format JPEG (extensions <strong>.JPG</strong> et <strong>.JPEG</strong>) peuvent être modifiés.</p>
-  <label for="editPhrase">Pour activer le mode Édition, recopiez exactement le texte : <strong>OK</strong></label>
+  <p id="editDlgTxt"><strong>Avertissement :</strong> N’utilisez pas cet outil à des fins illégales, frauduleuses ou trompeuses.<br>Utilisez cette fonctionnalité en toute connaissance de cause, car les modifications apportées seront irréversibles.<br>Seuls les documents de type <strong>image</strong> aux formats JPEG, PNG et WebP (extensions <strong>.JPG</strong>, <strong>.JPEG</strong>, <strong>.JFIF</strong>, <strong>.PNG</strong> et <strong>.WEBP</strong>) peuvent être modifiés.</p>
+  <label for="editPhrase">Pour activer le mode Édition, recopiez exactement le texte (en respectant les majuscules) :<br> <strong>OK</strong></label>
   <input type="text" id="editPhrase" autocomplete="off" autocapitalize="off" spellcheck="false">
   <p class="err" id="editErr" role="alert" hidden>Le texte saisi ne correspond pas. Recopiez exactement : OK</p>
   <div class="acts"><button type="button" id="editCancel">Annuler</button><button type="button" class="primary" id="editOk">Valider</button></div>
@@ -968,7 +971,7 @@ dialog.dlg::backdrop{background:rgba(0,0,0,.45)}
   <h2 id="allTitle">⚠️ Supprimer toutes les métadonnées</h2>
   <p id="allIntro"></p>
   <p>Cela concerne la position GPS, les dates, l’auteur, l’appareil, les numéros de série, la miniature intégrée, les données du constructeur, les blocs IPTC et XMP et les commentaires. Une fois la copie enregistrée, ces informations ne pourront plus être récupérées dans cette copie.</p>
-  <p>L’image elle-même, son orientation et son profil de couleurs sont conservés. Les fichiers d’origine ne sont jamais modifiés, et la suppression n’est appliquée qu’à l’enregistrement (« Annuler tout » permet de la retirer avant).</p>
+  <p>L’image elle-même, son orientation et son profil de couleurs sont conservés. Les fichiers d’origine ne sont jamais modifiés, et la suppression n’est appliquée qu’à l’enregistrement.</p>
   <div class="acts"><button type="button" id="allCancel">Annuler</button><button type="button" class="primary" id="allOk">Tout supprimer</button></div>
 </dialog>
 <dialog id="privDlg" class="dlg wide" aria-labelledby="privTitle">
@@ -3673,8 +3676,8 @@ SOFTWARE.
     return r;
   }
 
-  var thumbQ=Promise.resolve();
-  function isImg(it){return /^image\//.test(it.type)||/\.(jpe?g|png|gif|webp|bmp|avif|tiff?|heic|heif)$/i.test(it.name)}
+  var thumbQ=Promise.resolve(), metaQ=Promise.resolve();
+  function isImg(it){return /^image\//.test(it.type)||/\.(jpe?g|jfif|png|gif|webp|bmp|avif|tiff?|heic|heif)$/i.test(it.name)}
   function thumbHtml(it){return it.thumb?'<img class="lt" src="'+it.thumb+'" alt="">':""}
   async function createdOf(it){
     if(it.created||!window.exifr||!isImg(it)) return;
@@ -3711,7 +3714,11 @@ SOFTWARE.
         '</td><td class="gp" data-gp="'+it.id+'">'+gpsHtml(it)+'</td><td class="act"><button type="button" class="rm" data-rm="'+it.id+'" title="Retirer de la liste" aria-label="Retirer '+esc(it.name)+' de la liste">✕</button></td></tr>';
     }).join("");
     r.forEach(function(it){
-      if(isImg(it)&&!it.tq){it.tq=true;thumbQ=thumbQ.then(function(){return thumbOf(it)}).then(function(){setThumbCell(it);return createdOf(it)}).then(function(){setCreatedCell(it);return geoOf(it)}).then(function(){setGpsCell(it)},function(){})}
+      if(isImg(it)&&!it.tq){
+        it.tq=true;
+        thumbQ=thumbQ.then(function(){return thumbOf(it)}).then(function(){setThumbCell(it)},function(){});
+        metaQ=metaQ.then(function(){return geoOf(it)}).then(function(){setGpsCell(it);return createdOf(it)}).then(function(){setCreatedCell(it)},function(){});
+      }
     });
     $("empty").hidden=items.length>0;
     updateBatchRow();
@@ -3868,20 +3875,24 @@ SOFTWARE.
   var routePts=[], lastSkipped=0;
   function hav(a,b){var R=6371,r=Math.PI/180,dl=(b.lat-a.lat)*r,dn=(b.lng-a.lng)*r,x=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dn/2)*Math.sin(dn/2);return 2*R*Math.asin(Math.sqrt(x))}
 
-  async function geoOf(it){
-    if(it.geo!==undefined) return it.geo;
-    it.geo=false;
-    if(!window.exifr||!(/^image\//.test(it.type)||/\.(jpe?g|tiff?|heic|heif|avif|png|webp)$/i.test(it.name))) return false;
-    try{
-      var g=await exifr.gps(it.file);
-      if(g&&isFinite(g.latitude)&&isFinite(g.longitude)){
-        var d=null;
-        try{var m=await exifr.parse(it.file,["DateTimeOriginal","CreateDate"]);d=m&&(m.DateTimeOriginal||m.CreateDate)}catch(e){}
-        var ok=d instanceof Date&&!isNaN(d);
-        it.geo={lat:g.latitude,lng:g.longitude,t:ok?d.getTime():it.mod,exact:ok};
+  function geoOf(it){
+    if(!it.geoP) it.geoP=(async function(){
+      var r=false;
+      if(window.exifr&&(/^image\//.test(it.type)||/\.(jpe?g|jfif|tiff?|heic|heif|avif|png|webp)$/i.test(it.name))){
+        try{
+          var g=await exifr.gps(it.file);
+          if(g&&isFinite(g.latitude)&&isFinite(g.longitude)){
+            var d=null;
+            try{var m=await exifr.parse(it.file,["DateTimeOriginal","CreateDate"]);d=m&&(m.DateTimeOriginal||m.CreateDate)}catch(e){}
+            var ok=d instanceof Date&&!isNaN(d);
+            r={lat:g.latitude,lng:g.longitude,t:ok?d.getTime():it.mod,exact:ok};
+          }
+        }catch(e){}
       }
-    }catch(e){}
-    return it.geo;
+      it.geo=r;
+      return r;
+    })();
+    return it.geoP;
   }
 
   async function showRoute(){
@@ -4008,7 +4019,8 @@ SOFTWARE.
     return it.thumbP;
   }
   function tipHtml(p,i){
-    return '<div class="tip">'+(p.it.thumb?'<img src="'+p.it.thumb+'" alt="">':'')+esc((i+1)+". "+p.it.name+" · "+fmtDate(p.t))+'</div>';
+    return '<div class="mtip">'+(p.it.thumb?'<div class="mti"><img src="'+p.it.thumb+'" alt=""></div>':'')+
+      '<div class="mtn">N° '+(i+1)+'</div><div class="mtf">'+esc(p.it.name)+'</div><div class="mtd">'+esc(fmtDate(p.t))+'</div></div>';
   }
   function bindThumb(m,p,i){
     m.bindTooltip(tipHtml(p,i),{className:"thm",direction:"top",opacity:1,offset:[0,-10]});
@@ -4447,7 +4459,8 @@ SOFTWARE.
     {id:"thumb",label:"Miniature intégrée (peut contenir la photo d’origine)",fields:[]},
     {id:"maker",label:"Données propres au constructeur (MakerNote)",fields:[]},
     {id:"iptc",label:"Bloc IPTC (légendes, mots-clés, signature…)",fields:[]},
-    {id:"xmp",label:"Bloc XMP (métadonnées Adobe et autres)",fields:[]}
+    {id:"xmp",label:"Bloc XMP (métadonnées Adobe et autres)",fields:[]},
+    {id:"text",label:"Commentaires et textes intégrés (commentaire JPEG, textes PNG, prompts…)",fields:[]}
   ];
   function jpegScan(bin){
     var r={xmp:[],iptc:[],com:[]};
@@ -4510,17 +4523,188 @@ SOFTWARE.
     if(p.thumb){ex["1st"]={};ex.thumbnail=null}
     if(p.maker) del(e,[X.MakerNote]);
   }
+  /* ===== Formats PNG et WebP (EXIF + textes) ===== */
+  var MIME={jpeg:"image/jpeg",png:"image/png",webp:"image/webp"};
+  function fmtOf(bin){
+    if(bin.charCodeAt(0)===0xFF&&bin.charCodeAt(1)===0xD8) return "jpeg";
+    if(bin.slice(0,8)==="\x89PNG\r\n\x1a\n") return "png";
+    if(bin.slice(0,4)==="RIFF"&&bin.slice(8,12)==="WEBP") return "webp";
+    return "";
+  }
+  function be32(b,i){return ((b.charCodeAt(i)<<24)|(b.charCodeAt(i+1)<<16)|(b.charCodeAt(i+2)<<8)|b.charCodeAt(i+3))>>>0}
+  function pbe32(v){return String.fromCharCode((v>>>24)&255,(v>>>16)&255,(v>>>8)&255,v&255)}
+  function le32(b,i){return (b.charCodeAt(i)|(b.charCodeAt(i+1)<<8)|(b.charCodeAt(i+2)<<16)|(b.charCodeAt(i+3)<<24))>>>0}
+  function ple32(v){return String.fromCharCode(v&255,(v>>>8)&255,(v>>>16)&255,(v>>>24)&255)}
+  function le24(b,i){return b.charCodeAt(i)|(b.charCodeAt(i+1)<<8)|(b.charCodeAt(i+2)<<16)}
+  function ple24(v){return String.fromCharCode(v&255,(v>>>8)&255,(v>>>16)&255)}
+  function exifFromTiff(tiff){
+    if(!tiff) return emptyExif();
+    try{return piexif.load("Exif\x00\x00"+tiff)}catch(e){return emptyExif()}
+  }
+  function exifTiffOut(ex){
+    var d=dumpSafe(ex), back;
+    try{back=piexif.load(d.s)}catch(e){back=emptyExif()}
+    var skip={"0th":{34665:1,34853:1},"Exif":{40965:1},"GPS":{},"Interop":{},"1st":{}}, n=0;
+    ["0th","Exif","GPS","Interop","1st"].forEach(function(k){Object.keys(back[k]||{}).forEach(function(t){if(!skip[k][t]) n++})});
+    var seg=d.s; if(seg.slice(0,2)==="\xff\xe1") seg=seg.slice(4);
+    return n?{tiff:seg.slice(6)+"\x00\x00\x00\x00",note:d.note}:{tiff:null,note:d.note};
+  }
+  /* --- PNG --- */
+  function pngParse(bin){
+    var out=[], p=8, n=bin.length;
+    while(p+12<=n){
+      var len=be32(bin,p), type=bin.substr(p+4,4), end=p+12+len;
+      if(end>n) break;
+      out.push({type:type,raw:bin.slice(p,end),data:bin.slice(p+8,p+8+len)});
+      p=end; if(type==="IEND") break;
+    }
+    return out;
+  }
+  function pngChunk(type,data){return pbe32(data.length)+type+data+pbe32(crc32(binToU8(type+data)))}
+  function isTxt(c){return c.type==="tEXt"||c.type==="zTXt"||c.type==="iTXt"}
+  function pngText(c){
+    if(!isTxt(c)) return null;
+    var d=c.data, z=d.indexOf("\x00"); if(z<1) return null; var kw=d.slice(0,z);
+    if(c.type==="tEXt") return {kw:kw,text:d.slice(z+1)};
+    if(c.type==="zTXt") return {kw:kw,text:null};
+    if(d.charCodeAt(z+1)!==0) return {kw:kw,text:null};
+    var z2=d.indexOf("\x00",z+3); if(z2<0) return {kw:kw,text:null};
+    var z3=d.indexOf("\x00",z2+1); if(z3<0) return {kw:kw,text:null};
+    return {kw:kw,text:utf8dec(d.slice(z3+1))};
+  }
+  function pngTextChunk(kw,text){
+    if(/^[\x09\x0A\x20-\x7E\xA0-\xFF]*$/.test(text)) return pngChunk("tEXt",kw+"\x00"+text);
+    return pngChunk("iTXt",kw+"\x00\x00\x00\x00\x00"+utf8enc(text));
+  }
+  var PNGKW={artist:"Author",copy:"Copyright",desc:"Description",soft:"Software",dto:"Creation Time"};
+  var PNGGRP={author:["Author","Copyright"],desc:["Description","Comment"],device:["Software","Source"],dates:["Creation Time"]};
+  var XMPKW="XML:com.adobe.xmp";
+  function pngDateIn(t){
+    var m=String(t).match(/^(\d{4})[-:](\d{2})[-:](\d{2})[T ](\d{2}:\d{2}:\d{2})/);
+    if(m) return m[1]+"-"+m[2]+"-"+m[3]+" "+m[4];
+    var d=new Date(t); if(isNaN(d)) return "";
+    var p=function(n){return String(n).padStart(2,"0")};
+    return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())+" "+p(d.getHours())+":"+p(d.getMinutes())+":"+p(d.getSeconds());
+  }
+  function pngDateOut(v){var m=v.match(/^(\d{4})[-:](\d{2})[-:](\d{2})[ T](\d{2}:\d{2}:\d{2})$/);return m?m[1]+"-"+m[2]+"-"+m[3]+"T"+m[4]:v}
+  function pngExifData(parts){var c=parts.filter(function(x){return x.type==="eXIf"})[0];return c?c.data:null}
+  function pngTextMap(parts){var m={};parts.forEach(function(c){var t=pngText(c);if(t&&t.text!==null&&m[t.kw]===undefined) m[t.kw]=t.text});return m}
+  function pngInsertAt(parts){
+    var i=parts.map(function(c){return c.type}).indexOf("IDAT");
+    return i<0?Math.max(0,parts.length-1):i;
+  }
+  function buildPng(bin,vals,base,purge){
+    purge=purge||{};
+    var parts=pngParse(bin), ex=exifFromTiff(pngExifData(parts));
+    var errs=applyEdits(ex,vals,base); if(errs.length) return {errs:errs};
+    applyPurge(ex,purge);
+    var kill=function(kws){parts=parts.filter(function(c){var t=pngText(c);return !(t&&kws.indexOf(t.kw)>-1)})}, add=[];
+    Object.keys(PNGKW).forEach(function(id){
+      if(vals[id]===base[id]) return;
+      var kw=PNGKW[id], had=parts.some(function(c){var t=pngText(c);return t&&t.kw===kw});
+      if(!had) return;
+      kill([kw]);
+      var v=String(vals[id]).trim();
+      if(v!=="") add.push(pngTextChunk(kw,id==="dto"?pngDateOut(v):v));
+    });
+    if(purge.all||purge.text) parts=parts.filter(function(c){return !isTxt(c)});
+    else{
+      if(purge.xmp) kill([XMPKW]);
+      if(purge.author) kill(PNGGRP.author);
+      if(purge.desc) kill(PNGGRP.desc);
+      if(purge.device) kill(PNGGRP.device);
+      if(purge.dates){kill(PNGGRP.dates);parts=parts.filter(function(c){return c.type!=="tIME"})}
+    }
+    if(purge.all) parts=parts.filter(function(c){return c.type!=="tIME"});
+    parts=parts.filter(function(c){return c.type!=="eXIf"});
+    var t=exifTiffOut(ex), ins=[];
+    if(t.tiff) ins.push(pngChunk("eXIf",t.tiff));
+    ins=ins.concat(add);
+    var at=pngInsertAt(parts), raws=parts.map(function(c){return c.raw});
+    var out="\x89PNG\r\n\x1a\n"+raws.slice(0,at).join("")+ins.join("")+raws.slice(at).join("");
+    return {out:out,note:t.note,fmt:"png"};
+  }
+  /* --- WebP --- */
+  function webpParse(bin){
+    var out=[], p=12, n=bin.length;
+    while(p+8<=n){
+      var fc=bin.substr(p,4), len=le32(bin,p+4), end=p+8+len;
+      if(end>n) break;
+      out.push({fourcc:fc,data:bin.slice(p+8,end)});
+      p=end+(len&1);
+    }
+    return out;
+  }
+  function webpChunk(fc,data){return fc+ple32(data.length)+data+((data.length&1)?"\x00":"")}
+  function webpExifData(parts){
+    var c=parts.filter(function(x){return x.fourcc==="EXIF"})[0]; if(!c) return null;
+    return c.data.slice(0,6)==="Exif\x00\x00"?c.data.slice(6):c.data;
+  }
+  function webpDims(parts){
+    var by=function(f){return parts.filter(function(x){return x.fourcc===f})[0]}, v=by("VP8X"), l=by("VP8L"), k=by("VP8 ");
+    if(v) return {w:le24(v.data,4)+1,h:le24(v.data,7)+1,alpha:!!(v.data.charCodeAt(0)&0x10)};
+    if(l){var b=le32(l.data,1);return {w:(b&0x3FFF)+1,h:((b>>>14)&0x3FFF)+1,alpha:((b>>>28)&1)===1}}
+    if(k){var d=k.data;return {w:(d.charCodeAt(6)|(d.charCodeAt(7)<<8))&0x3FFF,h:(d.charCodeAt(8)|(d.charCodeAt(9)<<8))&0x3FFF,alpha:false}}
+    return null;
+  }
+  function buildWebp(bin,vals,base,purge){
+    purge=purge||{};
+    var parts=webpParse(bin), ex=exifFromTiff(webpExifData(parts));
+    var errs=applyEdits(ex,vals,base); if(errs.length) return {errs:errs};
+    applyPurge(ex,purge);
+    var dims=webpDims(parts); if(!dims) return {errs:["Fichier WebP non reconnu."]};
+    var dropXmp=!!(purge.all||purge.xmp);
+    var vp=parts.filter(function(c){return c.fourcc==="VP8X"})[0];
+    var xmpC=dropXmp?null:parts.filter(function(c){return c.fourcc==="XMP "})[0];
+    parts=parts.filter(function(c){return c.fourcc!=="EXIF"&&c.fourcc!=="XMP "&&c.fourcc!=="VP8X"});
+    var t=exifTiffOut(ex), needX=!!(vp||t.tiff||xmpC);
+    var flags=vp?vp.data.charCodeAt(0):(dims.alpha?0x10:0);
+    flags=t.tiff?(flags|0x08):(flags&~0x08); flags=xmpC?(flags|0x04):(flags&~0x04);
+    var body=(needX?[webpChunk("VP8X",String.fromCharCode(flags,0,0,0)+ple24(dims.w-1)+ple24(dims.h-1))]:[])
+      .concat(parts.map(function(c){return webpChunk(c.fourcc,c.data)}),t.tiff?[webpChunk("EXIF",t.tiff)]:[],xmpC?[webpChunk("XMP ",xmpC.data)]:[]).join("");
+    return {out:"RIFF"+ple32(4+body.length)+"WEBP"+body,note:t.note,fmt:"webp"};
+  }
+  function readStateFmt(bin,fmt){
+    if(fmt==="jpeg"){var e=loadExif(bin);return {ex:e,state:readEditState(e)}}
+    var parts=fmt==="png"?pngParse(bin):webpParse(bin), ex=exifFromTiff(fmt==="png"?pngExifData(parts):webpExifData(parts)), st=readEditState(ex);
+    if(fmt==="png"){
+      var tm=pngTextMap(parts);
+      Object.keys(PNGKW).forEach(function(id){
+        var v=tm[PNGKW[id]];
+        if(st[id]===""&&v!==undefined) st[id]=id==="dto"?pngDateIn(v):v;
+      });
+    }
+    return {ex:ex,state:st};
+  }
+  function privPresentFmt(ex,bin,fmt){
+    var p=privPresent(ex,bin);
+    if(fmt==="jpeg"){p.text=jpegScan(bin).com.length>0;return p}
+    if(fmt==="png"){
+      var parts=pngParse(bin), has=function(kws){return parts.some(function(c){var t=pngText(c);return t&&kws.indexOf(t.kw)>-1})};
+      p.author=p.author||has(PNGGRP.author); p.desc=p.desc||has(PNGGRP.desc); p.device=p.device||has(PNGGRP.device);
+      p.dates=p.dates||has(PNGGRP.dates)||parts.some(function(c){return c.type==="tIME"});
+      p.xmp=has([XMPKW]);
+      p.text=parts.some(function(c){var t=pngText(c);return !!t&&t.kw!==XMPKW});
+      return p;
+    }
+    p.xmp=webpParse(bin).some(function(c){return c.fourcc==="XMP "});
+    p.text=false;
+    return p;
+  }
   async function buildCopy(file,vals,base,purge){
-    var bin=u8ToBin(new Uint8Array(await file.arrayBuffer())), ex=loadExif(bin);
+    var bin=u8ToBin(new Uint8Array(await file.arrayBuffer())), fmt=fmtOf(bin);
+    if(fmt==="png") return buildPng(bin,vals,base,purge);
+    if(fmt==="webp") return buildWebp(bin,vals,base,purge);
+    var ex=loadExif(bin);
     var errs=applyEdits(ex,vals,base);
     if(errs.length) return {errs:errs};
     applyPurge(ex,purge||{});
     var d=dumpSafe(ex), out=piexif.insert(d.s,bin), segs=[];
     if(purge&&(purge.iptc||purge.all)) segs.push("iptc");
     if(purge&&(purge.xmp||purge.all)) segs.push("xmp");
-    if(purge&&purge.all) segs.push("com");
+    if(purge&&(purge.text||purge.all)) segs.push("com");
     if(segs.length) out=stripSegs(out,segs);
-    return {out:out,note:d.note};
+    return {out:out,note:d.note,fmt:"jpeg"};
   }
   function crc32(u8){
     var t=crc32.t;
@@ -4566,7 +4750,7 @@ SOFTWARE.
   var batch={on:false,vals:{},purge:{},del:{},tab:0};
   var BTABS=[{k:"desc",l:"✏ Description"},{k:"dates",l:"✏ Dates"},{k:"shot",l:"✏ Prise de vue"},{k:"gps",l:"✏ GPS"}];
   function selItem(){return items.filter(function(i){return i.id===selId})[0]}
-  function isJpegItem(it){return /^image\/jpeg$/i.test(it.file.type)||/\.jpe?g$/i.test(it.name)}
+  function isJpegItem(it){return /^image\/(jpeg|png|webp)$/i.test(it.file.type)||/\.(jpe?g|png|webp)$/i.test(it.name)}
   function copyObj(o){var r={};Object.keys(o).forEach(function(k){r[k]=o[k]});return r}
   function openDlg(d){if(d.showModal){if(!d.open)d.showModal()}else d.setAttribute("open","")}
   function closeDlg(d){if(d.close)d.close();else d.removeAttribute("open")}
@@ -4584,13 +4768,13 @@ SOFTWARE.
   }
   async function ensureEdit(it){
     if(it.ed) return;
-    var ed=it.ed={supported:false,vals:{},orig:{},base:{},purge:{},purgeSaved:{},present:{}};
+    var ed=it.ed={supported:false,vals:{},orig:{},base:{},purge:{},purgeSaved:{},present:{},fmt:""};
     if(!window.piexif||!isJpegItem(it)) return;
     try{
-      var bin=u8ToBin(new Uint8Array(await it.file.arrayBuffer()));
-      if(bin.charCodeAt(0)!==0xFF||bin.charCodeAt(1)!==0xD8) return;
-      var ex=loadExif(bin);
-      ed.base=readEditState(ex); ed.orig=copyObj(ed.base); ed.vals=copyObj(ed.base); ed.present=privPresent(ex,bin);
+      var bin=u8ToBin(new Uint8Array(await it.file.arrayBuffer())), fmt=fmtOf(bin);
+      if(!fmt) return;
+      var st=readStateFmt(bin,fmt);
+      ed.base=st.state; ed.orig=copyObj(ed.base); ed.vals=copyObj(ed.base); ed.present=privPresentFmt(st.ex,bin,fmt); ed.fmt=fmt;
       ed.supported=true;
     }catch(e){ed.supported=false}
   }
@@ -4661,14 +4845,14 @@ SOFTWARE.
     return '<button type="button" class="bx ed-ctl iconbtn" id="'+id+'" title="Confidentialité : choisir les informations sensibles à supprimer (position, auteur, miniature…)" aria-label="Confidentialité'+(n?" ("+n+" suppression"+(n>1?"s":"")+" en attente)":"")+'"><img class="bi2" src="'+IMG_PRIV+'" alt="">'+(n?'<span class="bdg" aria-hidden="true">'+n+'</span>':"")+'</button>';
   }
   function allBtn(id){
-    return '<button type="button" class="bx ed-ctl iconbtn" id="'+id+'" title="Supprime toutes les métadonnées qu’il est possible de retirer d’un JPEG : EXIF (position GPS, dates, appareil, auteur, numéros de série…), miniature intégrée, données du constructeur, blocs IPTC et XMP, commentaires. Sont conservés : l’image elle-même, son orientation et son profil de couleurs. La suppression est appliquée à la copie lors de l’enregistrement ; le fichier d’origine n’est jamais modifié." aria-label="Supprimer toutes les métadonnées possibles"><img class="bi2" src="'+IMG_ALL+'" alt=""></button>';
+    return '<button type="button" class="bx ed-ctl iconbtn" id="'+id+'" title="Supprime toutes les métadonnées qu’il est possible de retirer d’une image JPEG, PNG ou WebP : EXIF (position GPS, dates, appareil, auteur, numéros de série…), miniature intégrée, données du constructeur, blocs IPTC et XMP, commentaires. Sont conservés : l’image elle-même, son orientation et son profil de couleurs. La suppression est appliquée à la copie lors de l’enregistrement ; le fichier d’origine n’est jamais modifié." aria-label="Supprimer toutes les métadonnées possibles"><img class="bi2" src="'+IMG_ALL+'" alt=""></button>';
   }
   function exitBtn(){
     return '<button type="button" class="bx ed-ctl" id="exitEdit" title="Quitter le mode modification et revenir au mode Visualisation (une confirmation est demandée si des modifications ne sont pas enregistrées)">✖ Quitter les modifications</button>';
   }
   function editCtl(it){
     if(!editOn) return "";
-    if(!it.ed||!it.ed.supported) return '<span class="sub" style="margin:0">Édition non disponible pour ce format (JPEG uniquement).</span>'+exitBtn();
+    if(!it.ed||!it.ed.supported) return '<span class="sub" style="margin:0">Édition non disponible pour ce format (JPEG, PNG et WebP uniquement).</span>'+exitBtn();
     var n=dirtyCount(it), r=gpsCheck(it.ed.vals,false,it.ed.purge);
     return exitBtn()+saveHtml("saveBtn",n>0,r.first,SAVE_TIP)+
       '<button type="button" class="bx ed-ctl" id="cancelEdit" title="Annule toutes les modifications non enregistrées et remet les informations d’origine"'+(n?"":" disabled")+'>↩ Annuler tout</button>'+
@@ -4716,10 +4900,13 @@ SOFTWARE.
     updateEditMarker(vals); return true;
   }
   /* --- enregistrement d'un fichier --- */
-  async function writeCopy(blob,name){
+  async function writeCopy(blob,name,mime){
+    mime=mime||"image/jpeg";
     if(window.showSaveFilePicker){
       try{
-        var h=await window.showSaveFilePicker({suggestedName:name,types:[{description:"Image JPEG",accept:{"image/jpeg":[".jpg",".jpeg"]}}]});
+        var ext=(name.match(/\.[^.]+$/)||[".jpg"])[0].toLowerCase(), acc={};
+        acc[mime]=[ext];
+        var h=await window.showSaveFilePicker({suggestedName:name,types:[{description:"Image",accept:acc}]});
         var w=await h.createWritable(); await w.write(blob); await w.close();
         return {done:true,name:h.name,picker:true};
       }catch(e){
@@ -4737,7 +4924,7 @@ SOFTWARE.
       var r=await buildCopy(it.file,ed.vals,ed.base,ed.purge);
       if(r.errs){notify("Enregistrement impossible",r.errs);return}
       var name=modifName(it.name);
-      var res=await writeCopy(new Blob([binToU8(r.out)],{type:"image/jpeg"}),name);
+      var mime=MIME[r.fmt]||"image/jpeg", res=await writeCopy(new Blob([binToU8(r.out)],{type:mime}),name,mime);
       if(!res.done){statusEl.textContent="Enregistrement annulé.";return}
       ed.orig=copyObj(ed.vals); ed.purgeSaved=copyObj(ed.purge);
       var lines=res.picker?["La copie a été enregistrée sous le nom : "+res.name,"Le fichier d’origine n’a pas été modifié."]
@@ -4768,7 +4955,7 @@ SOFTWARE.
   function openAll(ctx){
     allCtx=ctx;
     $("allIntro").textContent=ctx==="batch"
-      ?"Attention : toutes les métadonnées possibles seront supprimées des copies de tous les fichiers JPEG de la liste ("+batchFiles().length+" fichier"+(batchFiles().length>1?"s":"")+")."
+      ?"Attention : toutes les métadonnées possibles seront supprimées des copies de tous les fichiers modifiables de la liste ("+batchFiles().length+" fichier"+(batchFiles().length>1?"s":"")+")."
       :"Attention : toutes les métadonnées possibles seront supprimées de la copie de ce fichier.";
     openDlg($("allDlg"));
   }
@@ -4831,7 +5018,7 @@ SOFTWARE.
       ?'<div class="gpsedit"><button type="button" class="bx primary ed-ctl" id="bGpsSet"'+(lockedBy(batch.purge,"lat")?" disabled":"")+' title="Copie dans les champs ci-dessous les coordonnées du viseur (centre de la carte)">📍 Mettre ces coordonnées en métadonnées</button><div class="mapbox"><div id="editmap" class="gmap"></div><div class="xhair" aria-hidden="true"></div></div><div class="eform">'+GF.map(batchInput).join("")+'</div></div>'
       :'<div class="eform">'+EF.filter(function(f){return f.tab===t.k}).map(batchInput).join("")+'</div>';
     var cnt=function(k){return k==="gps"?GF.length:EF.filter(function(f){return f.tab===k}).length};
-    p.innerHTML='<div class="phead"><div class="ptitle"><h2>📚 Modification en lot ('+n+' / '+items.length+') ⚠️</h2><p class="sub">'+n+' fichier'+(n>1?"s":"")+' JPEG concerné'+(n>1?"s":"")+(ign?" ("+ign+" ignoré"+(ign>1?"s":"")+" : format non pris en charge)":"")+'. Les champs « '+SENT+' » conservent les valeurs existantes ; saisissez une valeur pour l’appliquer à tous les fichiers.</p></div>'+
+    p.innerHTML='<div class="phead"><div class="ptitle"><h2>📚 Modification en lot ('+n+' / '+items.length+') ⚠️</h2><p class="sub">'+n+' fichier'+(n>1?"s":"")+' modifiable'+(n>1?"s":"")+' concerné'+(n>1?"s":"")+(ign?" ("+ign+" ignoré"+(ign>1?"s":"")+" : format non pris en charge)":"")+'. Les champs « '+SENT+' » conservent les valeurs existantes ; saisissez une valeur pour l’appliquer à tous les fichiers.</p></div>'+
       '<div class="pact">'+exitBtn()+''+saveHtml("bSave",batchDirty()>0,gpsCheck(batch.vals,true,batch.purge).first,SAVE_TIP_B)+'<button type="button" class="bx ed-ctl" id="bCancel" title="Annule toutes les modifications non enregistrées et remet les informations d’origine"'+(batchDirty()?"":" disabled")+'>↩ Annuler tout</button>'+privBtn("bPriv",purgeCount(batch.purge))+allBtn("bAll")+'</div></div>'+
       '<div class="tabs" role="tablist">'+BTABS.map(function(b,i){return '<button type="button" role="tab" class="ed-ctl" aria-selected="'+(i===batch.tab)+'" data-bt="'+i+'">'+esc(b.l)+'<i>('+cnt(b.k)+')</i></button>'}).join("")+'</div>'+
       '<div role="tabpanel">'+body+'</div>';
@@ -4868,7 +5055,7 @@ SOFTWARE.
     $("batchBody").innerHTML='<p><strong>Modifications appliquées à chaque copie :</strong></p><ul>'+batchLines(m).map(function(l){return "<li>"+esc(l)+"</li>"}).join("")+'</ul>'+
       '<p><strong>Fichiers ciblés ('+files.length+') :</strong></p><ul class="flist">'+files.map(function(f){return "<li>"+esc(f.name)+"</li>"}).join("")+'</ul>'+
       (ign?'<p>'+ign+' fichier'+(ign>1?"s":"")+' ignoré'+(ign>1?"s":"")+' (format non pris en charge).</p>':"")+
-      '<p>Une copie « nom_modif.jpg » est créée pour chaque fichier ; les originaux ne sont pas modifiés. Le navigateur vous demande ensuite le dossier des copies.</p>';
+      '<p>Une copie « nom_modif.extension » est créée pour chaque fichier ; les originaux ne sont pas modifiés. Le navigateur vous demande ensuite le dossier des copies.</p>';
     openDlg($("batchDlg"));
   }
   async function batchRun(){
@@ -4887,7 +5074,7 @@ SOFTWARE.
         var name=modifName(f.name), k=name.toLowerCase();
         if(used[k]){var c=used[k]++;name=name.replace(/(\.[^.]+)$/," ("+c+")$1")}else used[k]=1;
         var data=binToU8(r.out);
-        if(dir){var fh=await dir.getFileHandle(name,{create:true}), w=await fh.createWritable(); await w.write(new Blob([data],{type:"image/jpeg"})); await w.close()}
+        if(dir){var fh=await dir.getFileHandle(name,{create:true}), w=await fh.createWritable(); await w.write(new Blob([data],{type:MIME[r.fmt]||"image/jpeg"})); await w.close()}
         else zip.push({name:name,data:data});
         ok++;
       }catch(e){errs.push(f.name+" : "+(e&&e.message||e))}
@@ -4911,7 +5098,7 @@ SOFTWARE.
     document.body.classList.toggle("editmode",on);
     $("modeSw").setAttribute("aria-checked",String(on));
     $("modeTg").classList.toggle("on",on);
-    statusEl.textContent=on?"Mode Édition activé : chaque enregistrement crée une copie du fichier (nom_modif.jpg).":"Mode Visualisation.";
+    statusEl.textContent=on?"Mode Édition activé : chaque enregistrement crée une copie du fichier (nom_modif.extension).":"Mode Visualisation.";
     if(!on&&batch.on) setBatch(false);
     updateBatchRow();
     refreshPanel();
